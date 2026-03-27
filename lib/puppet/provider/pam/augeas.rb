@@ -26,7 +26,7 @@ Puppet::Type.type(:pam).provide(:augeas, parent: Puppet::Type.type(:augeasprovid
   default_file { '/etc/pam.d/system-auth' }
 
   def self.target(resource = nil)
-    if resource && resource[:service] && !(resource[:target])
+    if resource && resource[:service] && !resource[:target]
       "/etc/pam.d/#{resource[:service]}".chomp('/')
     else
       super
@@ -34,14 +34,14 @@ Puppet::Type.type(:pam).provide(:augeas, parent: Puppet::Type.type(:augeasprovid
   end
 
   lens do |resource|
-    target(resource) == '/etc/pam.conf' ? 'pamconf.lns' : 'pam.lns'
+    (target(resource) == '/etc/pam.conf') ? 'pamconf.lns' : 'pam.lns'
   end
 
   resource_path do |resource|
     service = resource[:service]
     type = resource[:type]
     mod = resource[:module]
-    control_cond = resource[:control_is_param] == :true ? "and control='#{resource[:control]}'" : ''
+    control_cond = (resource[:control_is_param] == :true) ? "and control='#{resource[:control]}'" : ''
     if target == '/etc/pam.conf'
       "$target/*[service='#{service}' and type='#{type}' and module='#{mod}' #{control_cond}]"
     else
@@ -94,7 +94,7 @@ Puppet::Type.type(:pam).provide(:augeas, parent: Puppet::Type.type(:augeasprovid
                   type: type,
                   control: control,
                   module: mod,
-                  arguments: arguments }
+                  arguments: arguments, }
         entry[:service] = aug.get("#{spath}/service") if target == '/etc/pam.conf'
         resources << new(entry)
       end

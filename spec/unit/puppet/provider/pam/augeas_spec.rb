@@ -25,7 +25,7 @@ describe provider_class do
                position: 'before module pam_deny.so',
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
 
       aug_open(target, 'Pam.lns') do |aug|
@@ -43,7 +43,7 @@ describe provider_class do
                module: 'pam_test.so',
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
 
       aug_open(target, 'Pam.lns') do |aug|
@@ -62,7 +62,7 @@ describe provider_class do
                arguments: 'test_me_out',
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
       apply!(Puppet::Type.type(:pam).new(
                title: 'Add pam_test.so to auth for system-auth',
@@ -73,7 +73,7 @@ describe provider_class do
                arguments: 'broken_shadow',
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
 
       aug_open(target, 'Pam.lns') do |aug|
@@ -144,7 +144,7 @@ describe provider_class do
                  target: target,
                  provider: 'augeas',
                  position: 'before module pam_env.so',
-                 ensure: 'positioned'
+                 ensure: 'positioned',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -165,7 +165,7 @@ describe provider_class do
                  position: 'before module pam_deny.so',
                  target: target,
                  provider: 'augeas',
-                 ensure: 'present'
+                 ensure: 'present',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -186,7 +186,7 @@ describe provider_class do
                  arguments: ['try_first_pass', 'retry=4', 'type='],
                  target: target,
                  provider: 'augeas',
-                 ensure: 'present'
+                 ensure: 'present',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -204,7 +204,7 @@ describe provider_class do
                  arguments: ['try_first_pass', 'retry=4'],
                  target: target,
                  provider: 'augeas',
-                 ensure: 'present'
+                 ensure: 'present',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -222,7 +222,7 @@ describe provider_class do
                  module: 'pam_pwquality.so',
                  target: target,
                  provider: 'augeas',
-                 ensure: 'present'
+                 ensure: 'present',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -241,7 +241,7 @@ describe provider_class do
                  module: 'pam_pwquality.so',
                  target: target,
                  provider: 'augeas',
-                 ensure: 'present'
+                 ensure: 'present',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -262,7 +262,7 @@ describe provider_class do
                  module: 'pam_pwquality.so',
                  target: target,
                  provider: 'augeas',
-                 ensure: 'present'
+                 ensure: 'present',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -283,7 +283,7 @@ describe provider_class do
                  arguments: ['try_first_pass', 'retry=4'],
                  target: target,
                  provider: 'augeas',
-                 ensure: 'absent'
+                 ensure: 'absent',
                ))
 
         aug_open(target, 'Pam.lns') do |aug|
@@ -307,7 +307,7 @@ describe provider_class do
                     arguments: ['try_first_pass', 'retry=3', 'type='],
                     target: target,
                     provider: 'augeas',
-                    ensure: 'present'
+                    ensure: 'present',
                   ))
 
       expect(txn.any_failed?).not_to eq(nil)
@@ -368,7 +368,7 @@ describe provider_class do
                position: 'before module pam_unix.so',
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
 
       aug_open(target, 'Pam.lns') do |aug|
@@ -391,7 +391,7 @@ describe provider_class do
                position: 'before module pam_deny.so',
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
 
       aug_open(target, 'Pam.lns') do |aug|
@@ -414,7 +414,7 @@ describe provider_class do
                arguments: %w[obscure use_authtok try_first_pass yescrypt rounds=5],
                target: target,
                provider: 'augeas',
-               ensure: 'present'
+               ensure: 'present',
              ))
 
       aug_open(target, 'Pam.lns') do |aug|
